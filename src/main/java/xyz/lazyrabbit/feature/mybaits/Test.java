@@ -4,7 +4,7 @@ import xyz.lazyrabbit.feature.mybaits.annotation.Insert;
 import xyz.lazyrabbit.feature.mybaits.annotation.Select;
 import xyz.lazyrabbit.feature.mybaits.test.entity.User;
 import xyz.lazyrabbit.feature.mybaits.test.mapper.UserMapper;
-import xyz.lazyrabbit.util.JDBCUtil;
+import xyz.lazyrabbit.util.JDBCUtils;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -20,12 +20,12 @@ public class Test {
                 if(method.isAnnotationPresent(Select.class)){
                     Select select = method.getAnnotation(Select.class);
                     System.out.println(select.value());
-                    return JDBCUtil.executeDQL(User.class, select.value());
+                    return JDBCUtils.executeDQL(User.class, select.value());
                 }else if(method.isAnnotationPresent(Insert.class)){
                     Insert insert = method.getAnnotation(Insert.class);
                     System.out.println(insert.value());
                     System.out.println(Arrays.toString(args));
-                    JDBCUtil.executeDML(insert.value(),args);
+                    JDBCUtils.executeDML(insert.value(),args);
                 }
                 return null;
             }

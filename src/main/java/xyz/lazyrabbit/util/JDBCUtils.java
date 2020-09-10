@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class JDBCUtil {
+public class JDBCUtils {
     private static String driverName = "";
     private static String url = "";
     private static String uname = "";
@@ -26,7 +26,7 @@ public class JDBCUtil {
             Properties pro = new Properties();
 
             // 2.加载properties文件
-            pro.load(JDBCUtil.class.getClassLoader().getResourceAsStream(
+            pro.load(JDBCUtils.class.getClassLoader().getResourceAsStream(
                     "db.properties"));
 
             // 3.读取properties文件中的数据
