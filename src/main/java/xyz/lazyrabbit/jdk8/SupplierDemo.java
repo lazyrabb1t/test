@@ -9,17 +9,17 @@ import java.util.function.Supplier;
 /**
  * @author guoxw
  * @Description TODO
- * @createTime 2022Äê01ÔÂ25ÈÕ 13:48:00
+ * @createTime 2022å¹´01æœˆ25æ—¥ 13:48:00
  */
 public class SupplierDemo {
     public static void main(String[] args) {
-        // µ±×ö´´½¨¶ÔÏóµÄÉú²úÕß£¬Ìá¹©ÁËÒ»¸öget·½·¨À´»ñÈ¡¶ÔÏó
+        // å½“åšåˆ›å»ºå¯¹è±¡çš„ç”Ÿäº§è€…ï¼Œæä¾›äº†ä¸€ä¸ªgetæ–¹æ³•æ¥è·å–å¯¹è±¡
         Supplier localDateTimeSupplier = LocalDateTime::now;
         System.out.println(localDateTimeSupplier.get());
         Supplier<Integer> randomSupplier = () -> new Random().nextInt(10);
         System.out.println(randomSupplier.get());
 
-        // Ä¬ÈÏÌá¹©ÁËÖ¸¶¨ÀàĞÍµÄSupplier£¬ÈçBooleanSupplier¡¢DoubleSupplier¡¢IntSupplierÒÔ¼°LongSupplier
+        // é»˜è®¤æä¾›äº†æŒ‡å®šç±»å‹çš„Supplierï¼Œå¦‚BooleanSupplierã€DoubleSupplierã€IntSupplierä»¥åŠLongSupplier
         IntSupplier intSupplier = () -> new Random().nextInt(10);
         System.out.println(intSupplier.getAsInt());
         BooleanSupplier booleanSupplier = () -> new Random().nextInt(10) > 5;

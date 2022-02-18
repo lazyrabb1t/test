@@ -6,45 +6,45 @@ import java.util.function.*;
 /**
  * @author guoxw
  * @Description TODO
- * @createTime 2022Äê01ÔÂ25ÈÕ 11:05:00
+ * @createTime 2022å¹´01æœˆ25æ—¥ 11:05:00
  */
 public class FunctionDemo {
     public static void main(String[] args) {
-        // ¼ÆËã»ú·­Òë
+        // è®¡ç®—æœºç¿»è¯‘
         // Represents a function that accepts one argument and produces a result.
-        // ±íÊ¾º¯Êı£¬Ëü½ÓÊÜÒ»¸ö²ÎÊı²¢²úÉúÒ»¸ö½á¹û¡£
+        // è¡¨ç¤ºå‡½æ•°ï¼Œå®ƒæ¥å—ä¸€ä¸ªå‚æ•°å¹¶äº§ç”Ÿä¸€ä¸ªç»“æœã€‚
 
-        // »ñÈ¡×Ö·û´®³¤¶È
+        // è·å–å­—ç¬¦ä¸²é•¿åº¦
         Function<String, Integer> lengthFunction = s -> s.length();
-        // »ñÈ¡Êı×ÖµÄÆ½·½
+        // è·å–æ•°å­—çš„å¹³æ–¹
         Function<Integer, Double> squareFunction = num -> Math.pow(num.doubleValue(), 2d);
 
-        // identity ·µ»Ø×ÔÉí
+        // identity è¿”å›è‡ªèº«
         System.out.println(Function.identity().apply("hhh"));
 
-        // apply Ö´ĞĞ¶¨ÒåµÄº¯Êı
+        // apply æ‰§è¡Œå®šä¹‰çš„å‡½æ•°
         System.out.println(lengthFunction.apply("hello"));
         System.out.println(squareFunction.apply(100));
 
-        // andThen ¿ÉÒÔÖ¸¶¨Ò»¸öº¯Êı£¬Ê¹ÓÃµ±Ç°º¯ÊıµÄÊä³ö×÷ÎªÊäÈë
+        // andThen å¯ä»¥æŒ‡å®šä¸€ä¸ªå‡½æ•°ï¼Œä½¿ç”¨å½“å‰å‡½æ•°çš„è¾“å‡ºä½œä¸ºè¾“å…¥
         System.out.println(lengthFunction.andThen(squareFunction).apply("rabb"));
-        // compose ¿ÉÒÔÖ¸¶¨Ò»¸öº¯Êı£¬¸Ãº¯ÊıµÄÊä³ö½«×÷Îªµ±Ç°º¯ÊıµÄÊäÈë£¬ÓëandThenÏà·´
+        // compose å¯ä»¥æŒ‡å®šä¸€ä¸ªå‡½æ•°ï¼Œè¯¥å‡½æ•°çš„è¾“å‡ºå°†ä½œä¸ºå½“å‰å‡½æ•°çš„è¾“å…¥ï¼Œä¸andThenç›¸å
         System.out.println(squareFunction.compose(lengthFunction).apply("apply"));
 
-        // IntFunction ½ÓÊÜÒ»¸öint²ÎÊı£¬·µ»ØÖ¸¶¨ÀàĞÍµÄ½á¹û£¬ÀàËÆµÄ»¹ÓĞ DoubleFunction LongFunction
+        // IntFunction æ¥å—ä¸€ä¸ªintå‚æ•°ï¼Œè¿”å›æŒ‡å®šç±»å‹çš„ç»“æœï¼Œç±»ä¼¼çš„è¿˜æœ‰ DoubleFunction LongFunction
         IntFunction<String> intFunction = value -> Integer.toString(value);
-        // IntFunction ½ÓÊÜÒ»¸öÖ¸¶¨ÀàĞÍ²ÎÊı£¬·µ»ØintÀàĞÍµÄ½á¹û£¬ÀàËÆµÄ»¹ÓĞ ToDoubleFunction ToLongFunction
+        // IntFunction æ¥å—ä¸€ä¸ªæŒ‡å®šç±»å‹å‚æ•°ï¼Œè¿”å›intç±»å‹çš„ç»“æœï¼Œç±»ä¼¼çš„è¿˜æœ‰ ToDoubleFunction ToLongFunction
         ToIntFunction<String> toIntFunction = value -> value.length();
 
-        // BiFunction ½ÓÊÜÁ½¸öÖ¸¶¨ÀàĞÍ²ÎÊı£¬²úÉúÒ»¸öÖ¸¶¨ÀàĞÍ½á¹û£¬ºÍFunctionÀàËÆ£¬ËûÒ²ÓĞIntBiFunction¡¢ToIntBiFunctionÕâĞ©·½·¨
+        // BiFunction æ¥å—ä¸¤ä¸ªæŒ‡å®šç±»å‹å‚æ•°ï¼Œäº§ç”Ÿä¸€ä¸ªæŒ‡å®šç±»å‹ç»“æœï¼Œå’ŒFunctionç±»ä¼¼ï¼Œä»–ä¹Ÿæœ‰IntBiFunctionã€ToIntBiFunctionè¿™äº›æ–¹æ³•
         BiFunction<String, String, Integer> lengthBiFunction = (s1, s2) -> s1.length() + s2.length();
 
-        // UnaryOperator FunctionµÄ×ÓÀà£¬Çø±ğÔÚÓÚUnaryOperatorµÄ²ÎÊıºÍ·µ»ØÖµÀàĞÍÊÇÏàÍ¬µÄ£¬Í¬Ê±ÍØÕ¹ÁËÒ»¸öidentity·½·¨£¬Ö±½Ó·µ»Ø²ÎÊı
+        // UnaryOperator Functionçš„å­ç±»ï¼ŒåŒºåˆ«åœ¨äºUnaryOperatorçš„å‚æ•°å’Œè¿”å›å€¼ç±»å‹æ˜¯ç›¸åŒçš„ï¼ŒåŒæ—¶æ‹“å±•äº†ä¸€ä¸ªidentityæ–¹æ³•ï¼Œç›´æ¥è¿”å›å‚æ•°
         UnaryOperator<String> unaryOperator = s -> s + "_abc";
         System.out.println(unaryOperator.apply("123"));
         System.out.println(UnaryOperator.identity().apply("123"));
 
-        // BinaryOperator BiFunctionµÄ×ÓÀà£¬BinaryOperatorµÄ²ÎÊıºÍ·µ»ØÖµÀàĞÍÒ²ÊÇÏàÍ¬µÄ£¬Í¬Ê±ÍØÕ¹ÁËÁ½¸ö·½·¨£¬minByÒÔ¼°maxBy,·Ö±ğ·µ»ØÒ»¸ö½ÏĞ¡ÖµÒÔ¼°Ò»¸ö½Ï´óÖµ
+        // BinaryOperator BiFunctionçš„å­ç±»ï¼ŒBinaryOperatorçš„å‚æ•°å’Œè¿”å›å€¼ç±»å‹ä¹Ÿæ˜¯ç›¸åŒçš„ï¼ŒåŒæ—¶æ‹“å±•äº†ä¸¤ä¸ªæ–¹æ³•ï¼ŒminByä»¥åŠmaxBy,åˆ†åˆ«è¿”å›ä¸€ä¸ªè¾ƒå°å€¼ä»¥åŠä¸€ä¸ªè¾ƒå¤§å€¼
         BinaryOperator<String> binaryOperator = (s1, s2) -> s1 + s2;
         System.out.println(binaryOperator.apply("hello", " world"));
         System.out.println(BinaryOperator.maxBy(Comparator.comparingInt(String::length)).apply("abc", "de"));

@@ -6,21 +6,21 @@ import java.util.function.Predicate;
 /**
  * @author guoxw
  * @Description TODO
- * @createTime 2022Äê01ÔÂ25ÈÕ 14:51:00
+ * @createTime 2022å¹´01æœˆ25æ—¥ 14:51:00
  */
 public class PredicateDemo {
     public static void main(String[] args) {
-        // Predicate ¶ÏÑÔ£¬Stream ÖĞµÄ filter() ·½·¨ÊÇÍ¨¹ı½ÓÊÕÒ»¸ö Predicate º¯Êı½Ó¿ÚÊµÏÖµÄ
+        // Predicate æ–­è¨€ï¼ŒStream ä¸­çš„ filter() æ–¹æ³•æ˜¯é€šè¿‡æ¥æ”¶ä¸€ä¸ª Predicate å‡½æ•°æ¥å£å®ç°çš„
         Predicate<String> predicate = s -> s.contains("a");
-        // ¿ÉÒÔÍ¨¹ıtest·½·¨ÅĞ¶ÏÆäÊÇ·ñ·ûºÏÌõ¼ş£¬
+        // å¯ä»¥é€šè¿‡testæ–¹æ³•åˆ¤æ–­å…¶æ˜¯å¦ç¬¦åˆæ¡ä»¶ï¼Œ
         System.out.println(predicate.test("abc"));
-        // negate·½·¨·µ»ØÒ»¸öÏà·´µÄ¶ÔÏó
+        // negateæ–¹æ³•è¿”å›ä¸€ä¸ªç›¸åçš„å¯¹è±¡
         System.out.println(predicate.negate().test("abc"));
-        // Ìá¹©ÁËandÒÔ¼°or·½·¨£¬¿ÉÒÔ¶à¸ö¶ÏÑÔ½øĞĞÇÒ¡¢»òÅĞ¶Ï
+        // æä¾›äº†andä»¥åŠoræ–¹æ³•ï¼Œå¯ä»¥å¤šä¸ªæ–­è¨€è¿›è¡Œä¸”ã€æˆ–åˆ¤æ–­
         System.out.println(predicate.and(s -> s.contains("c")).test("ac"));
         System.out.println(predicate.or(s -> s.contains("d")).test("d"));
 
-        // jdkÒ²Ìá¹©ÁËDoublePredicate¡¢BiPredicate¡¢IntPredicate¡¢LongPredicate
+        // jdkä¹Ÿæä¾›äº†DoublePredicateã€BiPredicateã€IntPredicateã€LongPredicate
         DoublePredicate doublePredicate = d -> d > 0d;
         System.out.println(doublePredicate.test(-2d));
     }

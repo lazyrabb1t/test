@@ -5,40 +5,40 @@ import java.util.Optional;
 /**
  * @author guoxw
  * @Description TODO
- * @createTime 2022Äê01ÔÂ25ÈÕ 10:23:00
+ * @createTime 2022å¹´01æœˆ25æ—¥ 10:23:00
  */
 public class OptionalDemo {
     public static void main(String[] args) {
 
-        // Optional ¹¹Ôì·½Ê½1 - of ´«ÈëµÄÖµ²»ÄÜÎª null
+        // Optional æ„é€ æ–¹å¼1 - of ä¼ å…¥çš„å€¼ä¸èƒ½ä¸º null
         Optional<String> helloOption = Optional.of("hello");
-        // Optional ¹¹Ôì·½Ê½2 - empty Ò»¸ö¿Õ optional
+        // Optional æ„é€ æ–¹å¼2 - empty ä¸€ä¸ªç©º optional
         Optional<String> emptyOptional = Optional.empty();
-        // Optional ¹¹Ôì·½Ê½3 - ofNullable Ö§³Ö´«Èë null ÖµµÄ optional
+        // Optional æ„é€ æ–¹å¼3 - ofNullable æ”¯æŒä¼ å…¥ null å€¼çš„ optional
         Optional<String> nullOptional = Optional.ofNullable(null);
 
         Optional<String> stringOptional = Optional.of("hello");
-        // ÅĞ¶ÏÊÇ·ñ²»Îªnull
+        // åˆ¤æ–­æ˜¯å¦ä¸ä¸ºnull
         System.out.println(stringOptional.isPresent());
 
-        // »ñÈ¡Öµ
-        // 1¡¢get Ö±½Ó»ñÈ¡Öµ£¬Îª¿ÕÊ±Å×³öNoSuchElementExceptionÒì³£
+        // è·å–å€¼
+        // 1ã€get ç›´æ¥è·å–å€¼ï¼Œä¸ºç©ºæ—¶æŠ›å‡ºNoSuchElementExceptionå¼‚å¸¸
         System.out.println(stringOptional.get());
-        // 2¡¢orElse Îª¿ÕÊ±»ñÈ¡µ½Ä¬ÈÏÖµ
+        // 2ã€orElse ä¸ºç©ºæ—¶è·å–åˆ°é»˜è®¤å€¼
         stringOptional.orElse("default");
-        // 3¡¢orElseGet Îª¿ÕÊ±»ñÈ¡µ½Ä¬ÈÏÖµ£¬ÓëorElseÏà±È£¬Supplier·½·¨Ö»ÓĞÔÚOptional¶ÔÏó²»º¬ÖµÊ±²ÅÖ´ĞĞµ÷ÓÃ
+        // 3ã€orElseGet ä¸ºç©ºæ—¶è·å–åˆ°é»˜è®¤å€¼ï¼Œä¸orElseç›¸æ¯”ï¼ŒSupplieræ–¹æ³•åªæœ‰åœ¨Optionalå¯¹è±¡ä¸å«å€¼æ—¶æ‰æ‰§è¡Œè°ƒç”¨
         stringOptional.orElseGet(() -> "default");
-        // 4¡¢orElseThrow Îª¿ÕÊ±Å×³ö×Ô¶¨ÒåÒì³£
-        stringOptional.orElseThrow(() -> new NullPointerException("ÖµÎª¿Õ"));
+        // 4ã€orElseThrow ä¸ºç©ºæ—¶æŠ›å‡ºè‡ªå®šä¹‰å¼‚å¸¸
+        stringOptional.orElseThrow(() -> new NullPointerException("å€¼ä¸ºç©º"));
 
 
-        // ifPresent ´æÔÚÖµÊ±µ÷ÓÃ·½·¨£¬²»´æÔÚÊ±do nothing
+        // ifPresent å­˜åœ¨å€¼æ—¶è°ƒç”¨æ–¹æ³•ï¼Œä¸å­˜åœ¨æ—¶do nothing
         stringOptional.ifPresent(System.out::println);
-        // filter ¹ıÂËÖµ
+        // filter è¿‡æ»¤å€¼
         stringOptional.filter(str -> str.length() > 3).ifPresent(System.out::println);
-        // map ×ª»»Öµ£¬·µ»ØÖµÓëµ±Ç°ÖµÀàĞÍÏàÍ¬
+        // map è½¬æ¢å€¼ï¼Œè¿”å›å€¼ä¸å½“å‰å€¼ç±»å‹ç›¸åŒ
         stringOptional.map(str -> str + "123");
-        // flatMap ×ª»»Öµ£¬·µ»ØÖµ¿ÉÒÔÓë´«ÈëÖµ²»Í¬£¬ÇÒ·µ»ØÖµĞèÒªÊÖ¶¯°ü×°ÎªOptionalÀàĞÍ
+        // flatMap è½¬æ¢å€¼ï¼Œè¿”å›å€¼å¯ä»¥ä¸ä¼ å…¥å€¼ä¸åŒï¼Œä¸”è¿”å›å€¼éœ€è¦æ‰‹åŠ¨åŒ…è£…ä¸ºOptionalç±»å‹
         stringOptional.flatMap(str -> Optional.of(str.length())).ifPresent(System.out::println);
 
     }

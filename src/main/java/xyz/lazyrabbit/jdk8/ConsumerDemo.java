@@ -6,23 +6,23 @@ import java.util.function.Consumer;
 /**
  * @author guoxw
  * @Description TODO
- * @createTime 2022Äê01ÔÂ25ÈÕ 14:51:00
+ * @createTime 2022å¹´01æœˆ25æ—¥ 14:51:00
  */
 public class ConsumerDemo {
     public static void main(String[] args) {
-        // ÓÃÀ´Ïû·ÑÒ»¸ö¶ÔÏó£¬½ÓÊÜÒ»¸ö²ÎÊı£¬Ã»ÓĞ·µ»ØÖµ£¬¼¯ºÏÀàµÄforeach·½·¨µÄ²ÎÊı¾ÍÊÇÒ»¸öConsumer¶ÔÏó
+        // ç”¨æ¥æ¶ˆè´¹ä¸€ä¸ªå¯¹è±¡ï¼Œæ¥å—ä¸€ä¸ªå‚æ•°ï¼Œæ²¡æœ‰è¿”å›å€¼ï¼Œé›†åˆç±»çš„foreachæ–¹æ³•çš„å‚æ•°å°±æ˜¯ä¸€ä¸ªConsumerå¯¹è±¡
         Consumer<String> consumer = System.out::println;
         consumer.accept("123");
-        // andThen·½·¨ÓÃÀ´×éºÏÁíÒ»¸öÏû·ÑÕß£¬¿ÉÒÔ¶ÔÒ»¸ö²ÎÊı½øĞĞ¶à´ÎÏû·Ñ
+        // andThenæ–¹æ³•ç”¨æ¥ç»„åˆå¦ä¸€ä¸ªæ¶ˆè´¹è€…ï¼Œå¯ä»¥å¯¹ä¸€ä¸ªå‚æ•°è¿›è¡Œå¤šæ¬¡æ¶ˆè´¹
         consumer.andThen(s -> System.out.println(s.length())).accept("haha");
-        // jdk»¹¶¨ÒåÁËÒÔÏÂConsumer
-        // BiConsumer	´«ÈëÁ½¸öÈÎÒâÀàĞÍ²ÎÊı£¬ÎŞ·µ»ØÖµ
-        // DoubleConsumer	´«ÈëÒ»¸ö double ²ÎÊı£¬ÎŞ·µ»ØÖµ
-        // IntConsumer	´«ÈëÒ»¸ö int ²ÎÊı£¬ÎŞ·µ»ØÖµ
-        // LongConsumer	´«ÈëÒ»¸ö long ²ÎÊı£¬ÎŞ·µ»ØÖµ
-        // ObjDoubleConsumer	´«ÈëÒ»¸öÈÎÒâÀàĞÍ²ÎÊı£¬Ò»¸ö double ²ÎÊı£¬ÎŞ·µ»ØÖµ
-        // ObjIntConsumer	´«ÈëÒ»¸öÈÎÒâÀàĞÍ²ÎÊı£¬Ò»¸ö int ²ÎÊı£¬ÎŞ·µ»ØÖµ
-        // ObjLongConsumer	´«ÈëÒ»¸öÈÎÒâÀàĞÍ²ÎÊı£¬Ò»¸ö long ²ÎÊı£¬ÎŞ·µ»ØÖµ
+        // jdkè¿˜å®šä¹‰äº†ä»¥ä¸‹Consumer
+        // BiConsumer	ä¼ å…¥ä¸¤ä¸ªä»»æ„ç±»å‹å‚æ•°ï¼Œæ— è¿”å›å€¼
+        // DoubleConsumer	ä¼ å…¥ä¸€ä¸ª double å‚æ•°ï¼Œæ— è¿”å›å€¼
+        // IntConsumer	ä¼ å…¥ä¸€ä¸ª int å‚æ•°ï¼Œæ— è¿”å›å€¼
+        // LongConsumer	ä¼ å…¥ä¸€ä¸ª long å‚æ•°ï¼Œæ— è¿”å›å€¼
+        // ObjDoubleConsumer	ä¼ å…¥ä¸€ä¸ªä»»æ„ç±»å‹å‚æ•°ï¼Œä¸€ä¸ª double å‚æ•°ï¼Œæ— è¿”å›å€¼
+        // ObjIntConsumer	ä¼ å…¥ä¸€ä¸ªä»»æ„ç±»å‹å‚æ•°ï¼Œä¸€ä¸ª int å‚æ•°ï¼Œæ— è¿”å›å€¼
+        // ObjLongConsumer	ä¼ å…¥ä¸€ä¸ªä»»æ„ç±»å‹å‚æ•°ï¼Œä¸€ä¸ª long å‚æ•°ï¼Œæ— è¿”å›å€¼
         BiConsumer<String, Integer> biConsumer = (str, length) -> {
             System.out.println(str.substring(0, length));
         };

@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 /**
  * @author guoxw
  * @Description TODO
- * @createTime 2022Äê01ÔÂ07ÈÕ 16:25:00
+ * @createTime 2022å¹´01æœˆ07æ—¥ 16:25:00
  */
 public class StreamDemo {
 
@@ -27,86 +27,86 @@ public class StreamDemo {
     }
 
     /**
-     * ´´½¨
+     * åˆ›å»º
      * @throws FileNotFoundException
      */
     public static void source() throws FileNotFoundException {
-        // Ê¹ÓÃCollection
-        List<String> list = Arrays.asList("Messi", "Neymar", "Su¨¢rez");
+        // ä½¿ç”¨Collection
+        List<String> list = Arrays.asList("Messi", "Neymar", "SuÃ¡rez");
         Stream<String> collectionStream = list.stream();
         Stream<String> collectionParallelStream = list.parallelStream();
-        // Ê¹ÓÃArrays
+        // ä½¿ç”¨Arrays
         String[] array = new String[]{"Benzema", "CR7", "Bale"};
         Stream<String> arrayStream = Arrays.stream(array);
-        // Ê¹ÓÃStream
+        // ä½¿ç”¨Stream
         Stream<String> ofStream = Stream.of("Salah", "Mane", "Firmino");
         Stream<UUID> generateStream = Stream.generate(UUID::randomUUID);
         Stream<Integer> integerStream = Stream.iterate(1, integer -> integer + 3);
         IntStream rangeStream = IntStream.range(1, 10);
-        // Ê¹ÓÃBufferedReader
+        // ä½¿ç”¨BufferedReader
         BufferedReader bufferedReader = new BufferedReader(new FileReader("README.md"));
-        // Ê¹ÓÃPattern
+        // ä½¿ç”¨Pattern
         Pattern pattern = Pattern.compile("A");
         Stream<String> patternStream = pattern.splitAsStream("ABCDE");
     }
 
     /**
-     * ÖĞ¼ä²Ù×÷
+     * ä¸­é—´æ“ä½œ
      */
     public static void intermediate() {
-        List<String> list1 = Arrays.asList("Messi", "Neymar", "Su¨¢rez");
+        List<String> list1 = Arrays.asList("Messi", "Neymar", "SuÃ¡rez");
         List<String> list2 = Arrays.asList("Benzema", "CR7", "Bale");
         List<String> list3 = Arrays.asList("Salah", "Mane", "Firmino", "Mane");
-        // Ê¹ÓÃfilter¹ıÂË
+        // ä½¿ç”¨filterè¿‡æ»¤
         System.out.println(list1.stream().filter(s -> s.length() > 4).count());
-        // Ê¹ÓÃmapÓ³Éä
+        // ä½¿ç”¨mapæ˜ å°„
         System.out.println(list1.stream().map(s -> s.length()).collect(Collectors.toList()));
-        // Ê¹ÓÃflatMapºÏ²¢
+        // ä½¿ç”¨flatMapåˆå¹¶
         System.out.println(Stream.of(list1, list2, list3).flatMap(list -> list.stream()).collect(Collectors.toList()));
-        // Ê¹ÓÃpeek·½·¨£¬Ö÷ÒªÓÃÓÚµ÷ÊÔ£¬ÒÔ±ãÔÚÔªËØÁ÷¹ı¹ÜµÀÖĞµÄÄ³¸öµãÊ±²é¿´ËüÃÇ£¬Êä³ö¼¯ºÏËùÓĞÔªËØ
+        // ä½¿ç”¨peekæ–¹æ³•ï¼Œä¸»è¦ç”¨äºè°ƒè¯•ï¼Œä»¥ä¾¿åœ¨å…ƒç´ æµè¿‡ç®¡é“ä¸­çš„æŸä¸ªç‚¹æ—¶æŸ¥çœ‹å®ƒä»¬ï¼Œè¾“å‡ºé›†åˆæ‰€æœ‰å…ƒç´ 
         list1.stream().peek(s -> System.out.println(s)).count();
-        // Ê¹ÓÃdistinctÈ¥ÖØ
+        // ä½¿ç”¨distinctå»é‡
         System.out.println(list3.stream().distinct().collect(Collectors.toList()));
-        // Ê¹ÓÃsortÅÅĞò
+        // ä½¿ç”¨sortæ’åº
         System.out.println(list3.stream().sorted(Comparator.comparing(s -> s.length())).collect(Collectors.toList()));
-        // Ê¹ÓÃlimit»ñÈ¡Ö¸¶¨ÊıÁ¿ÔªËØ
+        // ä½¿ç”¨limitè·å–æŒ‡å®šæ•°é‡å…ƒç´ 
         System.out.println(list1.stream().limit(2).collect(Collectors.toList()));
-        // Ê¹ÓÃskipÌø¹ıÖ¸¶¨ÊıÁ¿ÔªËØ
+        // ä½¿ç”¨skipè·³è¿‡æŒ‡å®šæ•°é‡å…ƒç´ 
         System.out.println(list1.stream().skip(2).collect(Collectors.toList()));
     }
 
     /**
-     * ½á¹û´¦Àí
+     * ç»“æœå¤„ç†
      */
     public static void terminal() {
-        List<String> list1 = Arrays.asList("Messi", "Neymar", "Su¨¢rez");
-        // forEach±éÀú
+        List<String> list1 = Arrays.asList("Messi", "Neymar", "SuÃ¡rez");
+        // forEachéå†
         list1.stream().forEach(System.out::println);
-        // forEachOrdered±éÀú£¬Ïà½ÏÓÚforEach£¬¸Ã·½·¨¿ÉÒÔ±£Ö¤ÔÚ²¢ĞĞÁ÷ÖĞÏû·ÑµÄË³Ğò
+        // forEachOrderedéå†ï¼Œç›¸è¾ƒäºforEachï¼Œè¯¥æ–¹æ³•å¯ä»¥ä¿è¯åœ¨å¹¶è¡Œæµä¸­æ¶ˆè´¹çš„é¡ºåº
         list1.parallelStream().forEachOrdered(System.out::println);
-        // Ê¹ÓÃtoArray×ª»¯ÎªÊı×é
+        // ä½¿ç”¨toArrayè½¬åŒ–ä¸ºæ•°ç»„
         System.out.println(list1.stream().toArray());
-        // Ê¹ÓÃcollectÊÕ¼¯×ª»»Êı¾İ
-        // ×ª»¯Îªmap
+        // ä½¿ç”¨collectæ”¶é›†è½¬æ¢æ•°æ®
+        // è½¬åŒ–ä¸ºmap
         System.out.println(list1.stream().collect(Collectors.toMap(Function.identity(), s -> s.length())));
-        // ×ª»¯Îª¶ººÅ·Ö¸ôµÄ×Ö·û´®
+        // è½¬åŒ–ä¸ºé€—å·åˆ†éš”çš„å­—ç¬¦ä¸²
         String str = list1.stream().collect(Collectors.joining(","));
         System.out.println(str);
-        // ·Ö×é¾ÛºÏ
+        // åˆ†ç»„èšåˆ
         System.out.println(list1.stream().collect(Collectors.groupingBy(s -> s.length())));
-        // °´Ìõ¼ş·ÖÎªÁ½×é
+        // æŒ‰æ¡ä»¶åˆ†ä¸ºä¸¤ç»„
         System.out.println(list1.stream().collect(Collectors.partitioningBy(s -> s.length() > 4)));
-        // Ê¹ÓÃreduce£¬ÕÒµ½length×îĞ¡µÄÔªËØ
+        // ä½¿ç”¨reduceï¼Œæ‰¾åˆ°lengthæœ€å°çš„å…ƒç´ 
         System.out.println(list1.stream().reduce((s1, s2) -> s1.length() > s2.length() ? s2 : s1));
-        // Ê¹ÓÃmaxÕÒµ½×î´óÔªËØ£¬minÀàËÆ
+        // ä½¿ç”¨maxæ‰¾åˆ°æœ€å¤§å…ƒç´ ï¼Œminç±»ä¼¼
         System.out.println(list1.stream().max(Comparator.comparing(Function.identity())));
-        // Ê¹ÓÃcount¼ÆÊı
+        // ä½¿ç”¨countè®¡æ•°
         System.out.println(list1.stream().count());
-        // Ê¹ÓÃfindFirst»ñÈ¡µÚÒ»¸öÔªËØ
+        // ä½¿ç”¨findFirstè·å–ç¬¬ä¸€ä¸ªå…ƒç´ 
         System.out.println(list1.stream().findFirst());
-        // Ê¹ÓÃfindAny»ñÈ¡ÈÎÒ»ÔªËØ
+        // ä½¿ç”¨findAnyè·å–ä»»ä¸€å…ƒç´ 
         System.out.println(list1.stream().filter(s -> s.length() > 1).findAny());
-        // Ê¹ÓÃanyMatch£¬ÓĞÒ»¸ö·ûºÏÌõ¼ş¾Í·µ»Øtrue£¬allMatch¡¢noneMatchÀàËÆ
+        // ä½¿ç”¨anyMatchï¼Œæœ‰ä¸€ä¸ªç¬¦åˆæ¡ä»¶å°±è¿”å›trueï¼ŒallMatchã€noneMatchç±»ä¼¼
         System.out.println(list1.stream().anyMatch(s -> s.length() > 5));
     }
 }
