@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @Description TODO
  * @createTime 2022年03月08日 11:24:00
  */
-public class FastDFSTest {
+public class FastDFSDemo {
 
     public static final String TEST_FILE_PATH = "E:\\images\\carrot03.png";
     public static final String TEST_FILE_NAME = "carrot03.png";
